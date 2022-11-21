@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="LWC">
+        <div class="slds-p-around_medium">
+            <lightning-input name="num1" label="first name" onchange={handlevaluechange}></lightning-input><br>
+            <lightning-input name="num2" label="second name" onchange={handlevaluechange}></lightning-input><br>
+
+            <lightning-button-group>
+                <lightning-button label="Add +" variant="brand" onclick={addition}></lightning-button>
+                <lightning-button label="Sub -" onclick={Sub}></lightning-button>
+                <lightning-button label="Mul *" onclick={Multiple}></lightning-button>
+                <lightning-button label="Div /" onclick={Division}></lightning-button>
+            </lightning-button-group><br><br>
+            <div class="slds-text-heading_medium">
+                Result: {Result} 
+            </div>
+    </div>
+    </lightning-card>
+</template>

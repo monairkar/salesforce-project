@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Search Result By Account">
+        <div class="slds-p-around_medium">
+            <lightning-input title="Enyer the Account Name" onchange={getcontacts}></lightning-input><br><br>
+            <lightning-datatable key-field="Id" columns={tableColumns} data={lstContact} 
+                                onrowaction={peformAction}>
+
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>

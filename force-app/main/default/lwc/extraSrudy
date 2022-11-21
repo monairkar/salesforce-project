@@ -1,0 +1,19 @@
+
+this is for error: 
+<lightning-messages data-id="message"></lightning-messages>
+handleError(e)
+    {
+        this.template.querySelector('[data-id="message"]').setError(e.detail.detail);
+        e.preventDefault();
+    }
+
+For submit:
+saveClick(e)
+    {
+        const inputFields = e.detail.fields;
+        this.template.querySelector('lightning-record-edit-form').submit(inputFields);
+    }
+
+
+    FlowNavigationNextEvent
+    getRecords from 'lightning/uiRecordApi';

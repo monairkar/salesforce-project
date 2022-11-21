@@ -1,0 +1,90 @@
+<template>
+    <lightning-card title="Layout">
+        
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-contact" title="contact">
+            <lightning-icon icon-name="standard:contact"></lightning-icon>
+            <span class="slds-assistive-text">contact</span>
+            </span>
+            </div>
+            <div class="slds-media__body">
+            <h2 class="slds-card__header-title">
+            <a href="#" class="slds-card__header-link slds-truncate" title="Contacts (1)">
+            <span> contacts({lstContacts.length})</span>
+            </a>
+            </h2>
+            </div>
+            <div class="slds-no-flex">
+            <button class="slds-button slds-button_neutral" onclick={createNewContact}>New</button>
+            <button class="slds-button slds-button_neutral slds-m-left_small" onclick={refreshContact}>Refresh</button>
+            </div>
+            </header>
+            </div>
+            <div class="slds-card__body">
+            <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid" aria-label="Example table in a Card">
+            <thead>
+            <tr class="slds-line-height_reset">
+            <th class="" scope="col" for:each={titlename} for:item="Titles" key={Titles}>
+            <div class="slds-truncate" title="Name">{Titles}</div>
+            </th>
+            
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="slds-hint-parent" for:each={lstContacts} for:item="con" key={con.Id}>
+            <th scope="row">
+            <div class="slds-truncate" title="Amy Choi">
+            <a href={con.Recordurl}>{con.Name}</a>
+            </div>
+            </th>
+            <td role="gridcell">
+            <div class="slds-truncate" title="Company One">{con.Phone}</div>
+            </td>
+            <td role="gridcell">
+            <div class="slds-truncate" title="Director of Operations">{con.Email}</div>
+            </td>
+            <td role="gridcell">
+            <div class="slds-truncate" title="adam@company.com">{con.Title}</div>
+            </td>
+            <td role="gridcell">
+                <!--this is the parent to child communication, we user API for it -->
+                <c-contact-action record={con} ondelete={openMdoelPrompt}></c-contact-action> 
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <footer class="slds-card__footer">
+            <a class="slds-card__footer-action" href="#">View All
+            <span class="slds-assistive-text">Contacts</span>
+            </a>
+            </footer>
+            </article>
+            <!-- jeva ekhadi gost hide and after click view s kraych asel tr he as if:true user kraych -->
+            <template if:true={isModalOpen}>  
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                    <lightning-icon icon-name="utility:close" variant="inverse" onclick={tabClose}></lightning-icon>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                    </button>
+                    <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete Contact</h1>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align: center;"> Are you sure you want to delete this contact? </p>
+                    </div>
+                    <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={tabClose}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={delRec}>Delete</button>
+                    </div>
+                    </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+                </template>
+            
+    </lightning-card>
+</template>

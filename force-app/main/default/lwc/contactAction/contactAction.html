@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-no-flex">
+        <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+          <button onclick={toggleaction} class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="Show More">
+            <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+            <span class="slds-assistive-text">Show More</span>
+          </button>
+          <template if:true={isopen}>
+            <!-- jeva ekhadi gost hide and after click view s kraych asel tr he as if:true user kraych -->
+            <div class="slds-dropdown slds-dropdown_actions slds-dropdown_right">
+                <ul class="slds-dropdown__list" role="menu">
+                  <li class="slds-dropdown__item" role="presentation" onclick={EditRecord}>
+                    <a href="JavaScript:void(0)" role="menuitem" tabindex="0">
+                      <span class="slds-truncate" title="Edit">Edit</span>
+                    </a>
+                  </li>
+                  <li class="slds-dropdown__item" role="presentation" onclick={viewRecord}>
+                   <!--- link user krun hi record edit hot <a href={record.Recordurl} role="menuitem" tabindex="-1">-->
+                    <a href="JavaScript:void(0)" role="menuitem" tabindex="-1" >
+                      <span class="slds-truncate" title="View">view</span>
+                    </a>
+                  </li>
+                  <li class="slds-dropdown__item" role="presentation" onclick={handlePromptClick}>
+                    <a href="JavaScript:void(0)" role="menuitem" tabindex="-1">
+                      <span class="slds-truncate" title="Delete" >Delete</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+          </template>
+        </div>
+    </div>
+</template>
